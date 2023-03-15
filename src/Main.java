@@ -1,3 +1,5 @@
+import java.time.LocalDate;
+
 public class Main {
     public  static void leapYear (int year) {
         String x= (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)?year + "-год является високосным":year + "-год не является високосным";
@@ -27,22 +29,45 @@ public class Main {
         }
         else {
             System.out.println("Для операционной системы вашего телефона наше приложение не подходит");
-
+    }
     }
 
-    }
+    public static int deliveryDays(int deliveryDistance){
+        int deliveryDays = 0;
+        if (deliveryDistance>=0&&deliveryDistance<=100){
+            deliveryDays++;
+            if (deliveryDistance > 20) {
+                deliveryDays++;
+            }
+            if (deliveryDistance > 60) {
+                deliveryDays++;
+            }
 
+        }
+        return deliveryDays;
+
+
+    }
     public static void main(String[] args) {
         System.out.println("     Задача 1");
         int year = 2100;
         leapYear(year);
+
         System.out.println("     Задача 2");
         String os="android";
-        int phoneYear = 2023;
-        int currentYear = 2023;
+        int phoneYear = 2015;
+        int currentYear = LocalDate.now().getYear();
         int newVersionAppYear = 2015;
         checkingModel(os, phoneYear, currentYear, newVersionAppYear);
 
+        System.out.println("     Задача 3");
+        int deliveryDistance = 95;
+        int deliveryDays = deliveryDays(deliveryDistance);
+        if (deliveryDays>0&&deliveryDays<=3) {
+            System.out.println("Потребуется дней:" + deliveryDays);
+        }else {
+            System.out.println("На указанное расстояние доставка не осуществляется");
+        }
 
     }
 
